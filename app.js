@@ -22,24 +22,30 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+
 //导入demo中间件模块
 var middlewareDemoRouter = require('./routes/examples/middlewareDemo')
-//第一个参数，请求名称，第二个参数，路由模板
-app.use('/middlewareDemo',middlewareDemoRouter) //  localhost:3000/demo
-
+app.use('/middlewareDemo',middlewareDemoRouter)
+//导入请求示例
 var requestExampleRouter= require('./routes/examples/requestExample')
 app.use('/requestExample',requestExampleRouter) ;
 
 //导入post请求模块
 var express = require('express');
 const bodyParser = require('body-parser');
-
 // 拦截所有请求
 // extended: false  方法内部使用 querystring 模块处理请求参数的格式
 // extended: true   方法内部使用第三方模块 qs 来处理请求参数的格式
 // 建议使用false
 app.use(bodyParser.urlencoded({extended: false}));
 
+//请求数据库数据
+var dataExampleRouter= require('./routes/examples/dataExample')
+app.use('/dataExample',dataExampleRouter) ;
+
+//请求数据库数据
+var testdbRouter= require('./dataBase/testdb')
+app.use('/testdb',testdbRouter) ;
 
 
 // catch 404 and forward to error handler
