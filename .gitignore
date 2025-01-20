@@ -6,7 +6,7 @@ node_modules/
 .vscode/
 
 # 忽略敏感信息
-config.js
+# config.js
 *.env
 *.pem
 

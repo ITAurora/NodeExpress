@@ -26,12 +26,12 @@ app.use('/users', usersRouter);
 //导入demo中间件模块
 var middlewareDemoRouter = require('./routes/examples/middlewareDemo')
 app.use('/middlewareDemo',middlewareDemoRouter)
+
 //导入请求示例
 var requestExampleRouter= require('./routes/examples/requestExample')
 app.use('/requestExample',requestExampleRouter) ;
 
 //导入post请求模块
-var express = require('express');
 const bodyParser = require('body-parser');
 // 拦截所有请求
 // extended: false  方法内部使用 querystring 模块处理请求参数的格式
@@ -39,15 +39,18 @@ const bodyParser = require('body-parser');
 // 建议使用false
 app.use(bodyParser.urlencoded({extended: false}));
 
-//请求数据库数据
-var dataExampleRouter= require('./routes/examples/dataExample')
-app.use('/dataExample',dataExampleRouter) ;
 
 //请求数据库数据
 var testdbRouter= require('./dataBase/testdb')
 app.use('/testdb',testdbRouter) ;
 
+//请求数据库数据
+var dataExampleRouter= require('./routes/examples/dataExample')
+app.use('/dataExample',dataExampleRouter) ;
 
+
+
+//-------------------------------------------------------------------------------------------------------
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
