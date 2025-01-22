@@ -1,5 +1,5 @@
 module.exports = {
-    //port: 3000, // express 服务启动端口
+    port: 3001, // express 服务启动端口
     /* 数据库相关配置 */
     db: {
       host: 'localhost', // 主机名

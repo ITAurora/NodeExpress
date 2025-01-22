@@ -19,8 +19,8 @@ app.get('/', (req, res, next) => {
   })
 })
 
-app.listen(port, () => {
-  console.log(`express server listen at http://localhost:${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`express dbserver listen at http://localhost:${port}`)
+// })
 
 module.exports = app;

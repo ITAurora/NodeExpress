@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+var config=require('./dataBase/config');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -40,13 +41,26 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
 
-//请求数据库数据
+//导入请求数据库数据示例
 var testdbRouter= require('./dataBase/testdb')
 app.use('/testdb',testdbRouter) ;
 
 //请求数据库数据
 var dataExampleRouter= require('./routes/examples/dataExample')
 app.use('/dataExample',dataExampleRouter) ;
+
+
+
+
+//解决跨域
+app.all("*", function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*")
+	res.header("Access-Control-Allow-Headers", "Content-Type")
+	res.header("Access-Control-Allow-Methods", "*")
+	res.header("Content-Type", "application/json;charset=utf-8")
+	next()
+})
+//------------------------------------------------------------------------------------------------------
 
 
 
@@ -66,4 +80,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// express 服务启动端口
+process.env.PORT = 3000;
+
 module.exports = app;
