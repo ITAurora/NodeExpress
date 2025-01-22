@@ -61,9 +61,10 @@ app.all("*", function (req, res, next) {
 	next()
 })
 //------------------------------------------------------------------------------------------------------
-
-
-
+var loginRouter = require('./routes/login');
+app.use('/src',loginRouter) ;
+var registerRouter = require('./routes/register');
+app.use('/src',registerRouter) ;
 //-------------------------------------------------------------------------------------------------------
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,3 +1,10 @@
+
+const express = require('express')
+
+//创建服务器
+const app = express.Router()
+
+
 //post请求
 app.post("/register", (req, res) => {
 	var userName = req.body.userName
@@ -32,3 +39,5 @@ app.post("/register", (req, res) => {
  
 	console.log("接收", req.body)
 })
+
+module.exports = app;

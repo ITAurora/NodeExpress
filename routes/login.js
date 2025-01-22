@@ -1,6 +1,15 @@
+
+const express = require('express')
+
+//创建服务器
+const app = express.Router()
+const conn= require('../dataBase/db')
+var jwt = require("jsonwebtoken")
+
 app.post("/login", (req, res) => {
 	var userName = req.body.userName
 	var passWord = req.body.passWord
+	console.log(userName,passWord);
 	if (!userName || !passWord) {
 		res.send({
 			code: 0,
@@ -40,3 +49,5 @@ app.post("/login", (req, res) => {
 		}
 	})
 })
+
+module.exports = app;
