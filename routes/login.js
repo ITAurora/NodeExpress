@@ -2,8 +2,7 @@
 const express = require('express')
 
 //创建服务器
-// const app = express.Router()
-const app = require('./examples/')
+const app = express.Router()
 const conn = require('../dataBase/db')
 var jwt = require("jsonwebtoken")
 
@@ -20,6 +19,8 @@ app.post("/login", (req, res) => {
 	}
 	const sqlStr = "select * from user WHERE userName=? AND passWord=?"
 	conn.query(sqlStr, [userName, passWord], (err, result) => {
+		console.log('result', result);
+
 		if (err) throw err
 		if (result.length > 0) {
 			// 生成token
