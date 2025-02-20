@@ -29,7 +29,7 @@ app.post("/login", (req, res) => {
 					userName: result[0].userName,
 				},
 				"secret",
-				{ expiresIn: "1min" },
+				{ expiresIn: "1h" },
 			)
 			console.log(token)
 			res.send({ code: 1, msg: "登录成功", token: token })
